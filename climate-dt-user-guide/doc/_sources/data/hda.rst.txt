@@ -94,8 +94,7 @@ Climate DT simulation, including:
 Users can inspect the complete metadata associated with a collection by
 opening the collection endpoint directly. For example:
 
-    `Climate Change Adaptation Digital Twin (Climate Adaptation DT) - Future Projection - IFS-FESOM - Generation-2 - Realization-1 <https://hda.data.destination-earth.eu/stac/v2/collections/
-   EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1>`_   
+`Climate Change Adaptation Digital Twin (Climate Adaptation DT) - Future Projection - IFS-FESOM - Generation-2 - Realization-1 <https://hda.data.destination-earth.eu/stac/v2/collections/EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1>`_   
 
 and look at one parameter:
 
