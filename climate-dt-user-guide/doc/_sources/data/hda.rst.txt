@@ -17,77 +17,111 @@ For the data request syntax, see :ref:`data_structure`.
    forthcoming update.
 
 
-Proposed additions to data/hda.rst
-==================================
+Harmonised Data Access (HDA)
+============================
 
-Target location
----------------
+Overview
+--------
 
-Insert after the section describing Climate DT access through HDA.
+The Harmonised Data Access (HDA) service provides a unified interface for
+discovering and accessing data available in the Destination Earth Data Lake.
 
-Interactive Climate DT Parameter Discovery and Visualisation
-------------------------------------------------------------
+For Climate DT users, HDA represents the primary entry point for browsing
+available simulations, exploring metadata, and retrieving subsets of climate
+data for analysis.
 
-In addition to direct API access, Climate DT variables can be explored
-interactively using the DestinE DataLake Lab examples.
+Climate DT and HDA Collections
+------------------------------
 
-The *Climate DT Parameter Plotter* notebook demonstrates how to:
+Climate DT data are exposed through a set of HDA collections.
 
-* search Climate DT parameters by name,
-* inspect parameter metadata,
-* select an available Climate DT scenario,
-* retrieve data through Harmonised Data Access (HDA),
-* visualise the selected parameter.
+Each collection corresponds to a specific Climate DT simulation dataset and
+contains the metadata required to describe the available variables,
+temporal coverage, spatial coverage, models, experiments, and resolutions.
 
-The notebook relies on the ``destinelab`` package and the Climate DT
-parameter dictionary, allowing users to browse the available variables
-without manually consulting parameter tables. Example metadata available
-for each parameter include:
+The HDA collections provide a consistent abstraction layer that allows users
+to discover Climate DT resources without needing to know the underlying
+storage implementation.
 
-* parameter identifier (``param``),
-* parameter name,
-* short name,
-* units,
-* encoding type,
-* supported Climate DT models,
-* temporal frequency,
-* level type.
-
-For example, the parameter *2 metre temperature* is exposed through
-metadata describing:
-
-* parameter identifier: ``167``,
-* short name: ``2t``,
-* unit: ``K``,
-* level type: ``sfc``,
-* frequency: hourly. ¹
-
-This interactive approach can be useful when:
-
-* identifying the parameter required for an analysis,
-* understanding available scenarios,
-* verifying model availability,
-* testing HDA requests before implementing operational workflows.
-
-Example notebook
+HDA as a STAC API
 ----------------
 
-The Climate DT Parameter Plotter notebook is available in the DestinE
-DataLake Gallery:
+HDA implements a STAC-compliant discovery interface.
 
-https://destination-earth.github.io/DestinE-DataLake-Lab/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.html
+The STAC (SpatioTemporal Asset Catalog) specification provides a standard way
+to describe geospatial assets and collections.
 
-The notebook provides a complete example from parameter selection to
-visualisation of Climate DT outputs through HDA.
+Through the STAC API users can:
 
-Notes
------
+* discover available Climate DT collections;
+* inspect collection metadata;
+* search datasets using temporal criteria;
+* access dataset assets and download endpoints;
+* integrate Climate DT data into third-party geospatial tools.
 
-The notebook is intended as an educational example and can be adapted
-for custom workflows, automated data retrieval, and exploratory analysis
-of Climate DT datasets.
+Climate DT Discovery Workflow
+-----------------------------
+
+The typical workflow consists of:
+
+#. Discover the available Climate DT collections.
+#. Identify the simulation of interest.
+#. Explore collection metadata.
+#. Select variables and temporal range.
+#. Submit an HDA request.
+#. Download or analyse the returned assets.
+
+.. figure:: images/climate_dt_hda_workflow.png
+   :width: 900px
+   :align: center
+
+   Relationship between Climate DT simulations, HDA collections and user workflows.
+
+Understanding Climate DT Metadata
+---------------------------------
+
+HDA exposes metadata describing:
+
+* model (ICON, IFS-FESOM, IFS-NEMO);
+* experiment;
+* generation;
+* resolution;
+* parameter identifiers;
+* temporal frequency;
+* level types.
+
+These metadata fields can be used to identify the most appropriate dataset
+for a given climate analysis.
+
+Interactive Exploration
+-----------------------
+
+Users can interactively explore Climate DT parameters and scenarios through
+the DestinE DataLake example notebooks.
+
+The Climate DT Parameter Plotter demonstrates how to:
+
+* discover Climate DT parameters;
+* inspect parameter metadata;
+* browse available scenarios;
+* retrieve data using HDA;
+* visualise the selected parameter.
+
+The notebook provides a practical introduction to parameter discovery and
+data access workflows.
+
+Example Resources
+-----------------
+
+* Climate DT Parameter Plotter
+* Polytope examples
+* Data Catalogue
+* Variable Lookup Tool
 
 References
 ----------
 
-¹ DEDL – HDA Climate DT Parameter Plotter Tutorial.
+* Harmonised Data Access documentation
+* STAC specification
+* Climate DT Data Catalogue
+* DestinE DataLake Gallery
