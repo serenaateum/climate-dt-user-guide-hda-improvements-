@@ -147,6 +147,46 @@ their corresponding metadata. Typical examples include simulation
 parameters such as model, experiment, level type, temporal frequency,
 resolution, and other collection-specific fields.
 
+The Queryables endpoint is also the recommended mechanism for discovering
+which Climate DT variables are available within a given simulation. This
+allows users to dynamically inspect the content of a collection without
+having to rely on static variable lists.
+
+A practical example showing how to inspect and use the Queryables endpoint
+is available in the DestinE DataLake Lab notebook:
+
+::
+
+   https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/
+   HDA/REST/HDA-REST-Queryables.ipynb
+
+Polytope Feature Parameter
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to the parameters described by the Queryables endpoint,
+Climate DT collections support the Polytope ``feature`` parameter for
+variable selection.
+
+The ``feature`` parameter is not currently described in the Queryables
+response, but it can be used in HDA requests following the same syntax and
+semantics used by the Polytope service. This allows users already familiar
+with Polytope workflows to seamlessly transfer existing requests and
+variable-selection patterns to HDA-based workflows.
+
+Additional information about the ``feature`` parameter is available in the
+Polytope documentation:
+
+::
+
+   https://polytope.readthedocs.io/en/latest/Service/Features/feature/
+
+.. hint::
+
+   A recommended workflow is to first inspect the collection metadata,
+   then explore the Queryables endpoint to discover available dimensions
+   and variables, and finally construct the HDA request using the desired
+   filters and Polytope-compatible parameters where applicable.
+
 
 Climate DT Discovery Workflow - Interactive Exploration
 -----------------------------
