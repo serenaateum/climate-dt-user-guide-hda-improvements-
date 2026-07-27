@@ -28,8 +28,6 @@ Destination Earth Data Lake documentation:
 https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discovery-and-data-access/Harmonized-Data-Access/Harmonized-Data-Access.html
 
 
-Climate DT and HDA Collections
-------------------------------
 
 Climate DT Collections in HDA
 -----------------------------
@@ -39,13 +37,13 @@ service as individual STAC collections.
 
 Each collection represents a specific Climate DT simulation and follows a
 structured naming convention encoding the main simulation attributes. For
-example:
+example the following collection identifier:
 
 ::
 
    EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1
 
-where:
+follows the naming convention below:
 
 * ``D1`` identifies the DestinE Climate DT data class;
 * ``G2`` identifies the simulation generation (Generation 2);
@@ -57,32 +55,20 @@ where:
 This naming convention enables users to quickly identify the simulation
 characteristics directly from the collection identifier.
 
-As Climate DT evolves, new simulation generations may become available and
-will be exposed through the same convention (e.g. ``G1``, ``G2``).
 
 STAC Metadata
--------------
+~~~~~~~~~~~~~
 
 The Harmonised Data Access service exposes Climate DT simulations through
-a STAC-compliant API.
-
-STAC (SpatioTemporal Asset Catalog) is a widely adopted standard for the
-description, discovery, and access of geospatial data. By exposing Climate
-DT simulations through STAC, HDA promotes interoperability with a broad
-ecosystem of geospatial tools, Earth Observation datasets, catalogues,
-and client applications.
+a [STAC-compliant API]().
 
 Each collection contains extensive metadata describing the corresponding
 Climate DT simulation, including:
 
+* collection description;
 * temporal coverage;
-* spatial coverage;
-* simulation activity;
-* model configuration;
-* available resolutions;
-* realization;
-* data access links;
-* queryable dimensions.
+* available parameters along with their information (cube:variables);
+* available providers (LUMI, MARENOSTRUM or LEONARDO);
 
 Users can inspect the complete metadata associated with a collection by
 opening the collection endpoint directly. For example:
@@ -91,6 +77,35 @@ opening the collection endpoint directly. For example:
 
    https://hda.data.destination-earth.eu/stac/v2/collections/
    EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1
+
+and look at one parameter:
+
+::
+
+    "Relative_humidity(clte_pl)": {
+      "type": "data",
+      "unit": "%",
+      "attrs": {
+        "url": "https://codes.ecmwf.int/grib/param-db/157",
+        "time": "Hourly",
+        "stream": "clte",
+        "levtype": "pl",
+        "encoding": "instantaneous",
+        "levelist": "1000,925,850,700,600,500,400,300,250,200,150,100,70,50,30,20,10,5,1",
+        "long_name": "Relative humidity",
+        "shortName": "r",
+        "parameter_ID": "157",
+        "product_type": "forecast",
+        "standard_name": "Relative_humidity"
+      },
+      "dimensions": [
+        "lat",
+        "lon",
+        "time"
+      ],
+      "description": "This parameter is the water vapour pressure as a percentage of the value at which the air becomes saturated (the point at which water vapour begins to condense into liquid water or deposition into ice).For temperatures over 0°C (273.15 K) it is calculated for saturation over water. At temperatures below -23°C it is calculated for saturation over ice.  Between -23°C and 0°C this parameter is calculated by interpolating between the ice and water values using a quadratic function.See more information about the model's relative humidity calculation."
+
+
 
 Discovering Available Query Parameters
 --------------------------------------
