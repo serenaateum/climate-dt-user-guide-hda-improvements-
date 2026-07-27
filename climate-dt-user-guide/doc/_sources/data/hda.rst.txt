@@ -185,7 +185,7 @@ The typical workflow consists of:
 #. Submit an HDA request.
 #. Download or analyse the returned assets.
 
-.. figure:: images/climate_dt_hda_workflow.png
+.. figure:: images/climatePlotter_wf.svg
    :width: 900px
    :align: center
 
