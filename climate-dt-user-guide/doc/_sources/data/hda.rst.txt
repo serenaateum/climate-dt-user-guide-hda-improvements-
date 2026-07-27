@@ -29,6 +29,7 @@ https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discover
 
 .. hint::
 
+   Text
    A comprehensive collection of ready-to-run examples is available in the
    `DestinE-DataLake-Lab <https://github.com/destination-earth/DestinE-DataLake-Lab>`_
    repository.
