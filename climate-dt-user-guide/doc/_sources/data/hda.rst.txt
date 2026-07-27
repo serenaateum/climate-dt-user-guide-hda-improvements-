@@ -3,32 +3,16 @@
 Harmonised Data Access (HDA)
 =============================
 
+Overview
+--------
+
 The HDA provides access to the full DestinE Data Portfolio via a single
 API, including Climate DT output. It is particularly suited to users who
 want to explore the broader DestinE data offering alongside Climate DT,
 or who prefer a REST-based access method.
 
-For the data request syntax, see :ref:`data_structure`.
+More detailed information on the HDA service is available in the https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discovery-and-data-access/Harmonized-Data-Access/Harmonized-Data-Access.html
 
-
-.. note::
-
-   Full HDA instructions for Climate DT data will be available in a
-   forthcoming update.
-
-
-Harmonised Data Access (HDA)
-============================
-
-Overview
---------
-
-The Harmonised Data Access (HDA) service provides a unified interface for
-discovering and accessing data available in the Destination Earth Data Lake.
-
-For Climate DT users, HDA represents the primary entry point for browsing
-available simulations, exploring metadata, and retrieving subsets of climate
-data for analysis.
 
 Climate DT and HDA Collections
 ------------------------------
@@ -125,3 +109,15 @@ References
 * STAC specification
 * Climate DT Data Catalogue
 * DestinE DataLake Gallery
+
+
+
+
+.. note::
+
+   Full HDA instructions for Climate DT data will be available in a
+   forthcoming update.
+
+
+
+
