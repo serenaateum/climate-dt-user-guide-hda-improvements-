@@ -27,9 +27,9 @@ More detailed information on the HDA service is available in the
 Destination Earth Data Lake documentation:
 https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discovery-and-data-access/Harmonized-Data-Access/Harmonized-Data-Access.html
 
->[!NOTE]
->Climate DT simulations are exposed as HDA STAC collections.
->Inspect the collection metadata and queryables endpoints before building requests.  
+[!NOTE]
+Climate DT simulations are exposed as HDA STAC collections.
+Inspect the collection metadata and queryables endpoints before building requests.  
 
    A comprehensive collection of ready-to-run examples is available in the
    `DestinE-DataLake-Lab <https://github.com/destination-earth/DestinE-DataLake-Lab>`_
