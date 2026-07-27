@@ -1,0 +1,17 @@
+.. _hda_access:
+
+Harmonised Data Access (HDA)
+=============================
+
+The HDA provides access to the full DestinE Data Portfolio via a single
+API, including Climate DT output. It is particularly suited to users who
+want to explore the broader DestinE data offering alongside Climate DT,
+or who prefer a REST-based access method.
+
+For the data request syntax, see :ref:`data_structure`.
+
+
+.. note::
+
+   Full HDA instructions for Climate DT data will be available in a
+   forthcoming update.
