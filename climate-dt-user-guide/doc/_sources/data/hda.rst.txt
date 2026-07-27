@@ -173,7 +173,7 @@ This allows users familiar with Polytope workflows to seamlessly transfer
 existing requests and variable-selection patterns to HDA-based workflows.
 
 
-Climate DT Discovery Workflow
+Climate DT Discovery Workflow - Interactive Exploration
 -----------------------------
 
 The typical workflow consists of:
@@ -192,9 +192,6 @@ The typical workflow consists of:
    Relationship between Climate DT simulations, HDA collections and user workflows.
 
 
-Interactive Exploration
------------------------
-
 Users can interactively explore Climate DT parameters and scenarios through
 the DestinE DataLake example notebooks.
 
@@ -209,29 +206,6 @@ The Climate DT Parameter Plotter demonstrates how to:
 The notebook provides a practical introduction to parameter discovery and
 data access workflows.
 
-Example Resources
------------------
-
-* Climate DT Parameter Plotter
-* Polytope examples
-* Data Catalogue
-* Variable Lookup Tool
-
-References
-----------
-
-* Harmonised Data Access documentation
-* STAC specification
-* Climate DT Data Catalogue
-* DestinE DataLake Gallery
-
-
-
-
-.. note::
-
-   Full HDA instructions for Climate DT data will be available in a
-   forthcoming update.
 
 
 
