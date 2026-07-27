@@ -3,29 +3,141 @@
 Harmonised Data Access (HDA)
 =============================
 
-Overview
---------
+The Harmonised Data Access (HDA) service provides access to the DestinE
+Data Portfolio, including Climate DT outputs, through a STAC-compliant
+API.
 
-The HDA provides access to the full DestinE Data Portfolio via a single
-API, including Climate DT output. It is particularly suited to users who
-want to explore the broader DestinE data offering alongside Climate DT,
-or who prefer a REST-based access method.
+STAC (SpatioTemporal Asset Catalog) is a widely adopted standard for the
+description, discovery, and access of geospatial data. By exposing
+Climate DT datasets through STAC, HDA enables users to discover and
+access Climate DT simulations using a common interoperability framework
+that is already supported by numerous geospatial tools, libraries, and
+platforms.
 
-More detailed information on the HDA service is available in the https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discovery-and-data-access/Harmonized-Data-Access/Harmonized-Data-Access.html
+This approach facilitates the integration of Climate DT simulations with
+other Earth observation, climate, environmental, and geospatial datasets,
+allowing users to build workflows that span multiple data sources while
+relying on a standard metadata model and access interface.
+
+In the context of Climate DT, HDA collections represent the available
+simulation datasets and provide the metadata required to discover,
+filter, and retrieve Climate DT assets.
+
+More detailed information on the HDA service is available in the
+Destination Earth Data Lake documentation:
+https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discovery-and-data-access/Harmonized-Data-Access/Harmonized-Data-Access.html
 
 
 Climate DT and HDA Collections
 ------------------------------
 
-Climate DT data are exposed through a set of HDA collections.
+Climate DT Collections in HDA
+-----------------------------
 
-Each collection corresponds to a specific Climate DT simulation dataset and
-contains the metadata required to describe the available variables,
-temporal coverage, spatial coverage, models, experiments, and resolutions.
+Climate DT simulations are exposed through the Harmonised Data Access (HDA)
+service as individual STAC collections.
 
-The HDA collections provide a consistent abstraction layer that allows users
-to discover Climate DT resources without needing to know the underlying
-storage implementation.
+Each collection represents a specific Climate DT simulation and follows a
+structured naming convention encoding the main simulation attributes. For
+example:
+
+::
+
+   EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1
+
+where:
+
+* ``D1`` identifies the DestinE Climate DT data class;
+* ``G2`` identifies the simulation generation (Generation 2);
+* ``PROJECTIONS`` identifies the simulation activity;
+* ``SSP3-7.0`` identifies the climate scenario;
+* ``IFS-FESOM`` identifies the model;
+* ``R1`` identifies the first realization.
+
+This naming convention enables users to quickly identify the simulation
+characteristics directly from the collection identifier.
+
+As Climate DT evolves, new simulation generations may become available and
+will be exposed through the same convention (e.g. ``G1``, ``G2``).
+
+STAC Metadata
+-------------
+
+The Harmonised Data Access service exposes Climate DT simulations through
+a STAC-compliant API.
+
+STAC (SpatioTemporal Asset Catalog) is a widely adopted standard for the
+description, discovery, and access of geospatial data. By exposing Climate
+DT simulations through STAC, HDA promotes interoperability with a broad
+ecosystem of geospatial tools, Earth Observation datasets, catalogues,
+and client applications.
+
+Each collection contains extensive metadata describing the corresponding
+Climate DT simulation, including:
+
+* temporal coverage;
+* spatial coverage;
+* simulation activity;
+* model configuration;
+* available resolutions;
+* realization;
+* data access links;
+* queryable dimensions.
+
+Users can inspect the complete metadata associated with a collection by
+opening the collection endpoint directly. For example:
+
+::
+
+   https://hda.data.destination-earth.eu/stac/v2/collections/
+   EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1
+
+Discovering Available Query Parameters
+--------------------------------------
+
+The STAC Queryables endpoint can be used to discover the parameters
+available for filtering and requesting data within a collection.
+
+For example:
+
+::
+
+   https://hda.data.destination-earth.eu/stac/v2/collections/
+   EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1/
+   queryables?ecmwf:resolution=high
+
+The queryables endpoint provides machine-readable information about the
+available dimensions and request parameters, allowing users to construct
+valid searches programmatically.
+
+A detailed example of using STAC Queryables is available in the DestinE
+DataLake Lab notebook:
+
+::
+
+   https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/
+   HDA/REST/HDA-REST-Queryables.ipynb
+
+Climate DT Variables
+--------------------
+
+The list of available Climate DT variables can be discovered through the
+Queryables endpoint.
+
+In addition, Climate DT supports the Polytope ``feature`` parameter used
+for variable selection. Although this parameter is not currently exposed
+through the STAC Queryables description, it can be used in the same way as
+documented for Polytope requests.
+
+Additional information about the ``feature`` parameter is available in the
+Polytope documentation:
+
+::
+
+   https://polytope.readthedocs.io/en/latest/Service/Features/feature/
+
+This allows users familiar with Polytope workflows to seamlessly transfer
+existing requests and variable-selection patterns to HDA-based workflows.
 
 HDA as a STAC API
 ----------------
