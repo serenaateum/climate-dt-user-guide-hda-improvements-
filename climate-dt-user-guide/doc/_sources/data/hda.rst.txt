@@ -125,13 +125,16 @@ and look at the metadata of one of the available parameter:
 
 
 
-Discovering Available Query Parameters
---------------------------------------
+Discovering Climate DT Variables and Query Parameters
+-----------------------------------------------------
 
-The STAC Queryables endpoint can be used to discover the parameters
-available for filtering and requesting data within a collection.
+The STAC Queryables endpoint provides a machine-readable description of the
+dimensions and request parameters available within a Climate DT collection.
+It can be used to discover which filters are supported and to construct
+valid HDA search and retrieval requests programmatically.
 
-For example:
+For example, the queryables endpoint for the high-resolution version of the
+IFS-FESOM SSP3-7.0 projection simulation can be inspected at:
 
 ::
 
@@ -139,38 +142,10 @@ For example:
    EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1/
    queryables?ecmwf:resolution=high
 
-The queryables endpoint provides machine-readable information about the
-available dimensions and request parameters, allowing users to construct
-valid searches programmatically.
-
-A detailed example of using STAC Queryables is available in the DestinE
-DataLake Lab notebook:
-
-::
-
-   https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/
-   HDA/REST/HDA-REST-Queryables.ipynb
-
-Climate DT Variables
---------------------
-
-The list of available Climate DT variables can be discovered through the
-Queryables endpoint.
-
-In addition, Climate DT supports the Polytope ``feature`` parameter used
-for variable selection. Although this parameter is not currently exposed
-through the STAC Queryables description, it can be used in the same way as
-documented for Polytope requests.
-
-Additional information about the ``feature`` parameter is available in the
-Polytope documentation:
-
-::
-
-   https://polytope.readthedocs.io/en/latest/Service/Features/feature/
-
-This allows users familiar with Polytope workflows to seamlessly transfer
-existing requests and variable-selection patterns to HDA-based workflows.
+The response describes the available dimensions, their valid values, and
+their corresponding metadata. Typical examples include simulation
+parameters such as model, experiment, level type, temporal frequency,
+resolution, and other collection-specific fields.
 
 
 Climate DT Discovery Workflow - Interactive Exploration
