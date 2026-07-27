@@ -27,7 +27,23 @@ More detailed information on the HDA service is available in the
 Destination Earth Data Lake documentation:
 https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discovery-and-data-access/Harmonized-Data-Access/Harmonized-Data-Access.html
 
+.. hint::
 
+   A comprehensive collection of ready-to-run examples is available in the
+   `DestinE-DataLake-Lab <https://github.com/destination-earth/DestinE-DataLake-Lab>`_
+   repository.
+
+   In particular, the Climate DT notebooks available are:
+
+   - How to use the polytope feature extracion in HDA `Extract Location values <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ExtractLocationValues.ipynb>`_
+   - How to access Climate DT data via HDA for different types of Climate DT simulations `Plot a Climate DT parameter <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.ipynb>`_
+   - How to request Climate DT data selecting a Region of Interest via HDA `Extract Climate DT data in a ROI <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ROISelectionandDataAnalysis.ipynb>`_
+   - How to use the HDA to query and access Climate DT data and plot vector data `Extract Climate DT data <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE.ipynb>`_
+   - How to use the HDA to query and access Climate DT data to plot a parameter series `Extract Climate DT data series <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE-Series.ipynb>`_
+
+   See the :ref:`data access page <model_data>` for how to perform analyses from any local or HPC environment.
+
+   For the data request syntax, see :ref:`data_structure`.
 
 Climate DT Collections in HDA
 -----------------------------
