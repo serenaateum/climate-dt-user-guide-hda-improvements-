@@ -15,3 +15,79 @@ For the data request syntax, see :ref:`data_structure`.
 
    Full HDA instructions for Climate DT data will be available in a
    forthcoming update.
+
+
+Proposed additions to data/hda.rst
+==================================
+
+Target location
+---------------
+
+Insert after the section describing Climate DT access through HDA.
+
+Interactive Climate DT Parameter Discovery and Visualisation
+------------------------------------------------------------
+
+In addition to direct API access, Climate DT variables can be explored
+interactively using the DestinE DataLake Lab examples.
+
+The *Climate DT Parameter Plotter* notebook demonstrates how to:
+
+* search Climate DT parameters by name,
+* inspect parameter metadata,
+* select an available Climate DT scenario,
+* retrieve data through Harmonised Data Access (HDA),
+* visualise the selected parameter.
+
+The notebook relies on the ``destinelab`` package and the Climate DT
+parameter dictionary, allowing users to browse the available variables
+without manually consulting parameter tables. Example metadata available
+for each parameter include:
+
+* parameter identifier (``param``),
+* parameter name,
+* short name,
+* units,
+* encoding type,
+* supported Climate DT models,
+* temporal frequency,
+* level type.
+
+For example, the parameter *2 metre temperature* is exposed through
+metadata describing:
+
+* parameter identifier: ``167``,
+* short name: ``2t``,
+* unit: ``K``,
+* level type: ``sfc``,
+* frequency: hourly. ¹
+
+This interactive approach can be useful when:
+
+* identifying the parameter required for an analysis,
+* understanding available scenarios,
+* verifying model availability,
+* testing HDA requests before implementing operational workflows.
+
+Example notebook
+----------------
+
+The Climate DT Parameter Plotter notebook is available in the DestinE
+DataLake Gallery:
+
+https://destination-earth.github.io/DestinE-DataLake-Lab/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.html
+
+The notebook provides a complete example from parameter selection to
+visualisation of Climate DT outputs through HDA.
+
+Notes
+-----
+
+The notebook is intended as an educational example and can be adapted
+for custom workflows, automated data retrieval, and exploratory analysis
+of Climate DT datasets.
+
+References
+----------
+
+¹ DEDL – HDA Climate DT Parameter Plotter Tutorial.
