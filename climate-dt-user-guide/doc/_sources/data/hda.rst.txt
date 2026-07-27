@@ -154,21 +154,6 @@ Polytope documentation:
 This allows users familiar with Polytope workflows to seamlessly transfer
 existing requests and variable-selection patterns to HDA-based workflows.
 
-HDA as a STAC API
-----------------
-
-HDA implements a STAC-compliant discovery interface.
-
-The STAC (SpatioTemporal Asset Catalog) specification provides a standard way
-to describe geospatial assets and collections.
-
-Through the STAC API users can:
-
-* discover available Climate DT collections;
-* inspect collection metadata;
-* search datasets using temporal criteria;
-* access dataset assets and download endpoints;
-* integrate Climate DT data into third-party geospatial tools.
 
 Climate DT Discovery Workflow
 -----------------------------
@@ -188,21 +173,6 @@ The typical workflow consists of:
 
    Relationship between Climate DT simulations, HDA collections and user workflows.
 
-Understanding Climate DT Metadata
----------------------------------
-
-HDA exposes metadata describing:
-
-* model (ICON, IFS-FESOM, IFS-NEMO);
-* experiment;
-* generation;
-* resolution;
-* parameter identifiers;
-* temporal frequency;
-* level types.
-
-These metadata fields can be used to identify the most appropriate dataset
-for a given climate analysis.
 
 Interactive Exploration
 -----------------------
