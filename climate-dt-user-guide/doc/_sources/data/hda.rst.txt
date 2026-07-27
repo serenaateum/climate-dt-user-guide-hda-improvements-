@@ -31,8 +31,7 @@ https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discover
 
 .. hint::
 
-Climate DT simulations are exposed as HDA STAC collections.
-Inspect the collection metadata and queryables endpoints before building requests.  
+HINT
 
    A comprehensive collection of ready-to-run examples is available in the
    `DestinE-DataLake-Lab <https://github.com/destination-earth/DestinE-DataLake-Lab>`_
@@ -45,6 +44,9 @@ Inspect the collection metadata and queryables endpoints before building request
    - How to request Climate DT data selecting a Region of Interest via HDA `Extract Climate DT data in a ROI <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ROISelectionandDataAnalysis.ipynb>`_
    - How to use the HDA to query and access Climate DT data and plot vector data `Extract Climate DT data <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE.ipynb>`_
    - How to use the HDA to query and access Climate DT data to plot a parameter series `Extract Climate DT data series <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE-Series.ipynb>`_
+
+   Climate DT simulations are exposed as HDA STAC collections.
+   Inspect the collection metadata and queryables endpoints before building requests.  
 
 
 Climate DT Collections in HDA
