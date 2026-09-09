@@ -19,19 +19,92 @@ other Earth observation, climate, environmental, and geospatial datasets,
 allowing users to build workflows that span multiple data sources while
 relying on a standard metadata model and access interface.
 
-In the context of Climate DT, HDA collections represent the available
-simulation datasets and provide the metadata required to discover,
-filter, and retrieve Climate DT assets.
+In STAC, a collection is a dataset, or a group of closely related datasets, described through a common set of metadata. In the context of Climate DT, HDA collections correspond to the available simulation datasets and provide the metadata needed to discover, filter, and retrieve the associated Climate DT data.
 
 More detailed information on the HDA service is available in the
 Destination Earth Data Lake documentation:
 https://destine-data-lake-docs.data.destination-earth.eu/en/latest/dedl-discovery-and-data-access/Harmonized-Data-Access/Harmonized-Data-Access.html
 
 
+Prerequisites and access methods
+---------------------------------
 
-.. hint::
+.. admonition:: Prerequisite
 
-HINT
+   A DestinE Platform account with upgraded access is required. `Apply for upgraded
+   access here <https://platform.destine.eu/access-policy-upgrade/>`_.
+
+There are several ways to access and use the HDA API:
+
+- **On your local machine**
+  - Python 3.9 or later, together with one or more python libraries such as `requests`, `PySTAC`, or `EODAG`; or
+  - `curl` for command-line access.
+
+- **Through Insula Code or the DestinE Data Lake STACK**
+  - Browser-based Jupyter environments provided by the DestinE Platform and the DestinE Data Lake, with the required software already available.
+
+
+Authentication
+--------------
+
+A DestinE Platform authentication token is required to use HDA. The recommended way is to use the [destinelab](https://pypi.org/project/destinelab/) library:
+
+.. code-block:: python
+
+import destinelab as deauth
+import requests
+import json
+
+auth = deauth.AuthHandler(DESP_USERNAME, DESP_PASSWORD)
+access_token = auth.get_token()
+
+auth_headers = {"Authorization": f"Bearer {access_token}"}
+
+HDA_STAC_ENDPOINT="https://hda.data.destination-earth.eu/stac/v2"
+COLLECTION_ID="EO.ECMWF.DAT.D1.DT_CLIMATE.G2.PROJECTIONS_SSP3-7.0_IFS-FESOM.R1"
+
+hdaFilters={
+    "ecmwf:resolution": {
+        "eq": "standard"
+    },
+    "ecmwf:levtype": {
+        "eq": "sfc"
+    },
+    "ecmwf:param": {
+        "eq": [
+            "228004"
+        ]
+    },
+    "ecmwf:stream": {
+        "eq": "clmn"
+    },
+    "ecmwf:year": {
+        "eq": [
+            "2030"
+        ]
+    },
+    "ecmwf:month": {
+        "eq": [
+            "9"
+        ]
+    },
+    "ecmwf:levelist": {
+        "eq": [
+            "2"
+        ]
+    }
+}
+
+search_body = {
+     "collections": [COLLECTION_ID],
+     "query":  hdaFilters
+}  
+
+response = requests.post(HDA_STAC_ENDPOINT+"/search", headers=auth_headers, json=search_body)
+
+
+
+::
 
    A comprehensive collection of ready-to-run examples is available in the
    `DestinE-DataLake-Lab <https://github.com/destination-earth/DestinE-DataLake-Lab>`_
@@ -40,14 +113,19 @@ HINT
    In particular, the Climate DT notebooks available are:
 
    
-   - How to access Climate DT data via HDA for different types of Climate DT simulations `Plot a Climate DT parameter <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.ipynb>`_
-   - How to use the HDA to query and access Climate DT data and plot vector data `Extract Climate DT data <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE.ipynb>`_
-   - How to use the HDA to query and access Climate DT data to plot a parameter series `Extract Climate DT data series <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE-Series.ipynb>`_
-   - How to use the polytope feature extracion in HDA `Extract Location values <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ExtractLocationValues.ipynb>`_
-   - How to request Climate DT data selecting a Region of Interest via HDA `Extract Climate DT data in a ROI <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ROISelectionandDataAnalysis.ipynb>`_
+   - How to use HDA to access Climate DT data for different types of Climate DT simulations `Plot any Climate DT parameter <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.ipynb>`_
+   - How to use HDA to query, access and plot Climate DT vector data `Extract Climate DT data <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE.ipynb>`_
+   - How to use HDA to query, access and plot Climate DT data time series `Extract Climate DT data at different times <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE-Series.ipynb>`_
+   - How to use HDA to request Climate DT data exploiting the polytope feature extracion `Extract Location values time series <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ExtractLocationValues.ipynb>`_
+   - How to use HDA to request Climate DT data selecting a Region of Interest `Extract Climate DT data in a ROI <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ROISelectionandDataAnalysis.ipynb>`_
+
+   *The notebooks are developed to run primarly on the [DestinE Data Lake JupyterHub  environment](https://jupyter.central.data.destination-earth.eu/), which includes Earthkit package versions that could not be updated to the last version - check the earthkit package version used at [dedl-python-kernel-packages](https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/dedl-python-kernel-packages.txt)*
 
    Climate DT simulations are exposed as HDA STAC collections.
    Inspect the collection metadata and queryables endpoints before building requests.  
+   
+   Some notebooks still use Climate DT Generation 1 datasets because these datasets remain available through HDA. Nevertheless, users are recommended to work with Generation 2 datasets, which represent the current generation of Climate DT data.
+
 
 
 Climate DT Collections in HDA
@@ -77,11 +155,11 @@ This naming convention enables users to quickly identify the simulation
 characteristics directly from the collection identifier.
 
 
-STAC Metadata
-~~~~~~~~~~~~~
+STAC Metadata for HDA Climate DT Collections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Harmonised Data Access service exposes Climate DT simulations through
-a [STAC-compliant API]().
+a [STAC-compliant API](https://docs.ogc.org/cs/25-005/25-005.html).
 
 Each collection contains extensive metadata describing the corresponding
 Climate DT simulation, including:
@@ -89,7 +167,7 @@ Climate DT simulation, including:
 * collection description;
 * temporal coverage;
 * available parameters along with their information (cube:variables);
-* available providers (LUMI, MARENOSTRUM or LEONARDO);
+* the associated data bridge - LUMI, MARENOSTRUM or LEONARDO - (federation:backends);
 
 Users can inspect the complete metadata associated with a collection by
 opening the collection endpoint directly. For example:
@@ -148,6 +226,7 @@ having to rely on static variable lists.
 A practical example showing how to inspect and use the Queryables endpoint
 is available in the DestinE DataLake Lab notebook: https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/REST/HDA-REST-Queryables.ipynb
 
+
 Polytope Feature Parameter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -155,7 +234,7 @@ In addition to the parameters described by the Queryables endpoint,
 Climate DT collections support the Polytope ``feature`` parameter for
 variable selection.
 
-The ``feature`` parameter is not currently described in the Queryables
+The ``feature`` parameter is not described in the Queryables
 response, but it can be used in HDA requests following the same syntax and
 semantics used by the Polytope service. This allows users already familiar
 with Polytope workflows to seamlessly transfer existing requests and
@@ -174,7 +253,7 @@ HINT
    filters and Polytope-compatible parameters where applicable.
 
 
-Climate DT Discovery Workflow - Interactive Exploration
+Climate DT Discovery and Access Workflow - Interactive Exploration
 -----------------------------
 
 The typical workflow consists of:
@@ -193,7 +272,7 @@ The typical workflow consists of:
    Relationship between Climate DT simulations, HDA collections and user workflows.
 
 
-Users can interactively explore Climate DT parameters and scenarios through
+Users can interactively explore the available Climate DT parameters and simulations through
 the DestinE DataLake example notebook: https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.ipynb.
 
 The Climate DT Parameter Plotter demonstrates how to:
@@ -204,8 +283,7 @@ The Climate DT Parameter Plotter demonstrates how to:
 * retrieve data using HDA;
 * visualise the selected parameter.
 
-The notebook provides a practical introduction to parameter discovery and
-data access workflows.
+The notebook provides a practical introduction to parameter discovery and data access workflows.
 
 
 
