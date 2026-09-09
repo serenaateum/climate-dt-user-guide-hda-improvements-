@@ -37,8 +37,8 @@ Prerequisites and access methods
 There are several ways to access and use the HDA API:
 
 - **On your local machine**
-  - Python 3.9 or later, together with one or more python libraries such as `requests`, `PySTAC`, or `EODAG`; or
-  - `curl` for command-line access.
+  - Python 3.9 or later, together with one or more python libraries such as `Requests`, `PySTAC`, or `EODAG`; or
+  - curl for command-line access.
 
 - **Through Insula Code or the DestinE Data Lake STACK**
   - Browser-based Jupyter environments provided by the DestinE Platform and the DestinE Data Lake, with the required software already available.
@@ -49,7 +49,7 @@ Authentication
 
 A DestinE Platform authentication token is required to use HDA. The recommended way is to use the [destinelab](https://pypi.org/project/destinelab/) library:
 
-.. code-block:: python
+```pythonpython
 
 import destinelab as deauth
 import requests
@@ -101,7 +101,7 @@ search_body = {
 }  
 
 response = requests.post(HDA_STAC_ENDPOINT+"/search", headers=auth_headers, json=search_body)
-
+```
 
 
 ::
@@ -113,11 +113,11 @@ response = requests.post(HDA_STAC_ENDPOINT+"/search", headers=auth_headers, json
    In particular, the Climate DT notebooks available are:
 
    
-   - How to use HDA to access Climate DT data for different types of Climate DT simulations `Plot any Climate DT parameter <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.ipynb>`_
-   - How to use HDA to query, access and plot Climate DT vector data `Extract Climate DT data <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE.ipynb>`_
-   - How to use HDA to query, access and plot Climate DT data time series `Extract Climate DT data at different times <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE-Series.ipynb>`_
-   - How to use HDA to request Climate DT data exploiting the polytope feature extracion `Extract Location values time series <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ExtractLocationValues.ipynb>`_
-   - How to use HDA to request Climate DT data selecting a Region of Interest `Extract Climate DT data in a ROI <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ROISelectionandDataAnalysis.ipynb>`_
+   - Climate DT, different types of simulations `Plot any Climate DT parameter <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ParameterPlotter.ipynb>`_
+   - Climate DT vector data `Extract Climate DT data <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE.ipynb>`_
+   - Climate DT data time series `Extract Climate DT data at different times <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/DEDL-HDA-EO.ECMWF.DAT.DT_CLIMATE-Series.ipynb>`_
+   - Climate DT data exploiting the polytope feature extracion `Extract Location values time series <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ExtractLocationValues.ipynb>`_
+   - Climate DT data selecting a Region of Interest `Extract Climate DT data in a ROI <https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/HDA/DestinE_Digital_Twins/ClimateDT-ROISelectionandDataAnalysis.ipynb>`_
 
    *The notebooks are developed to run primarly on the [DestinE Data Lake JupyterHub  environment](https://jupyter.central.data.destination-earth.eu/), which includes Earthkit package versions that could not be updated to the last version - check the earthkit package version used at [dedl-python-kernel-packages](https://github.com/destination-earth/DestinE-DataLake-Lab/blob/main/dedl-python-kernel-packages.txt)*
 
