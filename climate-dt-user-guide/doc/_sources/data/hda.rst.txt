@@ -1,5 +1,3 @@
-.. _hda_access:
-
 Harmonised Data Access (HDA)
 =============================
 
@@ -49,7 +47,7 @@ Authentication
 
 A DestinE Platform authentication token is required to use HDA. The recommended way is to use the [destinelab](https://pypi.org/project/destinelab/) library:
 
-```pythonpython
+```python
 
 import destinelab as deauth
 import requests
@@ -244,8 +242,6 @@ Additional information about the ``feature`` parameter is available in the
 Polytope documentation: https://polytope.readthedocs.io/en/latest/Service/Features/feature/
 
 .. hint::
-
-HINT
 
    A recommended workflow is to first inspect the collection metadata,
    then explore the Queryables endpoint to discover available dimensions
