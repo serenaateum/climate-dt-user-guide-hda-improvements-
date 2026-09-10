@@ -47,8 +47,9 @@ Authentication
 
 A DestinE Platform authentication token is required to use HDA. The recommended way is to use the [destinelab](https://pypi.org/project/destinelab/) library:
 
-::
 
+
+::
 
 import destinelab as deauth
 import requests
